@@ -1,0 +1,6 @@
+<h3>Menú</h3>
+<hr>
+<ul class="list-group">
+    <li *ngFor="let menuItem of sideMenu" class="list-group-item" [routerLink]="[menuItem.route]"
+        routerLinkActive="router-link-active" routerLinkActive="active">{{menuItem.title}}</li>
+</ul>
