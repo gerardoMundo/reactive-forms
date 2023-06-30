@@ -12,5 +12,6 @@ export class SideMenuComponent {
     { title: 'Dinámicos', route: './reactive/dynamic' },
     { title: 'Switches', route: './reactive/switches' },
     { title: 'Validaciones', route: './auth' },
+    { title: 'Países', route: './countries' },
   ];
 }
