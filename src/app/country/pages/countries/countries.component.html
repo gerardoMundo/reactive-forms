@@ -1,1 +1,16 @@
-<p>countries works!</p>
+<h3>Selector de países</h3>
+<hr>
+
+<form [formGroup]="myForm">
+    <div class="row mb-3">
+        <div class="col">
+            <label for="region" class="form-label">Región:</label>
+            <select formControlName="region" id="region" class="form-control">
+                <option value="">-seleciones un país-</option>
+            </select>
+        </div>
+    </div>
+    <h2>Valores del formulario:</h2>
+    <code>{{myForm.value | json}}</code>
+    <p>Es válido: <code>{{myForm.valid | json}}</code></p>
+</form>
