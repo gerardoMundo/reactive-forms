@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidatorService } from 'src/app/shared/service/validator.service';
+import { EmailValidator } from 'src/app/shared/validators/email.validator';
 
 @Component({
   templateUrl: './register-page.component.html',
@@ -12,31 +13,42 @@ export class RegisterPageComponent {
     private validatorService: ValidatorService
   ) {}
 
-  public myForm: FormGroup = this.fb.group({
-    name: [
-      '',
-      [
-        Validators.required,
-        Validators.pattern(this.validatorService.firstNameAndLastnamePattern),
+  public myForm: FormGroup = this.fb.group(
+    {
+      name: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(this.validatorService.firstNameAndLastnamePattern),
+        ],
       ],
-    ],
-    userName: ['', [Validators.required, this.validatorService.cantBeStrinder]],
-    email: [
-      '',
-      [
-        Validators.required,
-        Validators.pattern(this.validatorService.emailPattern),
+      userName: [
+        '',
+        [Validators.required, this.validatorService.cantBeStrinder],
       ],
-    ],
-    password: [
-      '',
-      [
-        Validators.required,
-        Validators.pattern(this.validatorService.passwordPattern),
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(this.validatorService.emailPattern),
+        ],
+        [new EmailValidator()],
       ],
-    ],
-    repPassword: ['', Validators.required],
-  });
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(this.validatorService.passwordPattern),
+        ],
+      ],
+      repPassword: ['', Validators.required],
+    },
+    {
+      validator: [
+        this.validatorService.areEqualsFields('password', 'repPassword'),
+      ],
+    }
+  );
 
   //** Methods **
   onSubmit(): void {
