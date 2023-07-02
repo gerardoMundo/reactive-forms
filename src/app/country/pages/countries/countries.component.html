@@ -7,8 +7,27 @@
             <label for="region" class="form-label">Región:</label>
             <select formControlName="region" id="region" class="form-control">
                 <option value="">-seleciones un país-</option>
+                <option *ngFor="let region of regions" [value]="region">{{region}}</option>
             </select>
+
+            <div *ngIf="countries.length > 0" class="col">
+                <label for="countries" class="form-label">Países:</label>
+                <select formControlName="country" id="countries" class="form-control">
+                    <option value="">-seleciones un país-</option>
+                    <option *ngFor="let country of countries" [value]="country.cca3">{{country.name}}</option>
+                </select>
+            </div>
+
+            <div *ngIf="country.length > 0" class="col">
+                <label for="countries" class="form-label">Fronteras:</label>
+                <select formControlName="borders" id="countries" class="form-control">
+                    <option value="">-seleciones una frontera-</option>
+                    <option *ngFor="let border of country" [value]="border.cca3">{{border.name}}</option>
+                </select>
+            </div>
         </div>
+
+
     </div>
     <h2>Valores del formulario:</h2>
     <code>{{myForm.value | json}}</code>
