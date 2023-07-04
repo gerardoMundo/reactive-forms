@@ -20,7 +20,7 @@
 
             <div *ngIf="country.length > 0" class="col">
                 <label for="countries" class="form-label">Fronteras:</label>
-                <select formControlName="borders" id="countries" class="form-control">
+                <select title="borders" formControlName="borders" id="borders" class="form-control">
                     <option value="">-seleciones una frontera-</option>
                     <option *ngFor="let border of country" [value]="border.cca3">{{border.name}}</option>
                 </select>
